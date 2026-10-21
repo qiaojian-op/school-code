@@ -1,7 +1,7 @@
 #task1
 
-a=int(input())
-b=int(input())
+a=int(input("Please enter a: "))
+b=int(input("Please enter b: "))
 if a == b:
     print("a is equal to b")
 else:
@@ -9,7 +9,7 @@ else:
 
 #task2
 
-c=int(input())
+c=int(input("Please enter c: "))
 if c%2==0:
     print("c is even")
 else:
