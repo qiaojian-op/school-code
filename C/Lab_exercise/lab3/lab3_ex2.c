@@ -3,9 +3,9 @@ int height,length;
 int area(int a,int b){
     return a*b;
 }
-int perimeter(int a,int b){{
+int perimeter(int a,int b){
     return 2*(a+b);
-}}
+}
 int main(){
     printf("please enter the height: ");
     scanf("%d",&height);

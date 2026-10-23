@@ -1,22 +1,7 @@
-the_count=[1,2,3,4,5]
-fruits=["apples",'oranges','pears','apricots']
-chang=[1,'pennies',2,'dimes',3,'quarters']
-
-for number in  the_count:
-    print (f"This is count {number}")
-
-for fruit in fruits:
-    print(f"A fruit of type: {fruit}")
-
-for i in chang:
-    print(f"I got {i}")
-
-elements=[]
-
-for i in range(0,6):
-    print(f"Adding {i} to the list.")
-
-    elements.append(i)
-
-for i in elements:
-    print(f"Element was : {i}")
+n=int(input("Please enter a positive odd integer: "))
+while n%2==n & n<=0:
+    n=int(input("Please enter a positive odd integer: "))
+ans=sum(range(1,n+1,2))
+for i in range(1,n,2):
+    print(f"{i} +",end=' ')
+print(f"{n} = {ans}",end=' ')
