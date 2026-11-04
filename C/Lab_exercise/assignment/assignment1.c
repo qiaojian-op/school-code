@@ -11,11 +11,11 @@ bool check(int ans,int user_ans);
 void Practice_creator(int level,int num);
 
 void menu(void){
-    printf("========Mayh Practice========\n");
+    printf("========Math Practice========\n");
     printf("Please choose a level\n");
     printf("LEVEL 1: 1\n");//'+':1 '-':2 0~10
     printf("LEVEL 2: 2\n");//'+':1 '-':2 0~100
-    printf("LEVEL 3: 3\n");//'*':3 '/':4 0~100
+    printf("LEVEL 3: 3\n");// +-x/ 0~100
     printf("==============================\n");
 }
 
@@ -23,9 +23,16 @@ bool check(int ans,int user_ans){//判断答案
     return ans==user_ans;
 }
 
+void grade(float m){
+    if(m<0.4f) printf("Your grade is E\n");
+    else if(m<0.6f) printf("Your grade is D\n");
+    else if(m<0.8f) printf("Your grade is C\n");
+    else if(m<0.9f) printf("Your grade is B\n");
+    else printf("Your grade is A\n");
+}
+
 void Practice_creator(int level,int num){
     int a,b,s1,s2,ans,user_ans,mark=0;
-    srand((unsigned)time(NULL));//播种随机数
     if(level==1){//第一等级
         printf("Level 1 exercise: \n");
         for(int i=1;i<=num;i++){//生成题目
@@ -65,9 +72,10 @@ void Practice_creator(int level,int num){
         }
         printf("Your mark is: %d of %d\n",mark,num);
         float m=(float)mark/num;
+        grade(m);
 //        m/=num;
-        printf("%f",m);//debug
-        if(m-0.6>0){//pass
+//        printf("%f",m);//debug
+        if(m-0.6>=0){//pass
             printf("You pass this level.Let us challenge next level!\n");
             Practice_creator(level+1,num);
         }
@@ -80,8 +88,8 @@ void Practice_creator(int level,int num){
     else if(level==2){
         printf("Level 2 exercise: \n");
         for(int i=1;i<=num;i++){//生成题目
-            a=rand()%101;
-            b=rand()%101;
+            a=rand()%100;
+            b=rand()%100;
             s1=rand()%2;
             if (s1==1){//加法
                 ans=a+b;
@@ -116,7 +124,8 @@ void Practice_creator(int level,int num){
         printf("Your mark is: %d / %d\n",mark,num); 
         float m;
         m=(float)mark/num;
-        if(m-0.6>0){//pass
+        grade(m);
+        if(m-0.6>=0){//pass
             printf("You pass this level.Let us challenge next level!\n");
             Practice_creator(level+1,num);
         }
@@ -127,6 +136,7 @@ void Practice_creator(int level,int num){
     }
     else if(level==3){
         printf("Level 3 exercise: \n");
+        printf("Round the result of the division to two decimal places.\n");
         for(int i=1;i<=num;i++){//生成题目
             a=rand()%100;
             b=rand()%100;
@@ -193,9 +203,9 @@ void Practice_creator(int level,int num){
         printf("Your mark is: %d / %d\n",mark,num); 
         float m;
         m=(float) mark/num;
-        if(m-0.6>0){//pass
+        grade(m);
+        if(m-0.6>=0){//pass
             printf("Amazing!!! You finish the final level!\n");
-            Practice_creator(level+1,num);
         }
         else{//fail
             printf("Don't worry!Let's practicre more!!!\n");
@@ -206,7 +216,7 @@ void Practice_creator(int level,int num){
 
 void Practice(int level,int num){
     if(level<1 || level >3 || num<25 || num>40){
-        printf("Invalid Input!!");
+        printf("Invalid Input!!\n");
         menu();
         User_get();
     }
@@ -223,6 +233,7 @@ void User_get(){
 }
 
 int main(){
+    srand((unsigned)time(NULL));//播种随机数
     menu();
     User_get();
     return 0;
